@@ -66,23 +66,26 @@ var CEG = function() {
 	
 	
 	
-	// 컬러제국이 모든 국가를 채웠는지 검사한다.
+	// 컬러제국이 모든 국가를 채웠는지 검사한다. (다 채우지 못했다면 false, 다 채우는데 성공하면 true를 반환한다)
 	this.checkColorFullFill = function() {
-		var temp = this.colorMap;
+		var temp = this.colorMap[0][0];
 		var flag = true;
 		for (var i = 0; i < this.mapSize.width; i++) {
 			for (var j = 0; j < this.mapSize.height; j++) {
-				if (temp) {
-					
+				if (temp != this.colorMap[i][j]) {
+					flag = false;
+					break;
 				}
+				temp = this.colorMap[i][j];
 			}
 		}
+		return flag;
 	};
 	
 	// 시작 좌표의 색깔을 반환한다.
 	this.getColorStartSpot = function() {
-		var {x, y} = this.getStartSpot(this.getStartSpotCode());
-		var color = this.colorMap[x][y];
+		var pos = this.getStartSpot(this.getStartSpotCode());
+		var color = this.colorMap[pos.x][pos.y];
 		
 		return color;
 	};

@@ -1,5 +1,5 @@
 /* 
- * Unification of Color Empires Game
+ * Unification of Color Empires Game - 1.0
  * 
  * 이 게임은 월경지가 매우 많은 영주국가들이 서로 분할하며 갈라지고 있었다.
  * 그러던 어느날, 한 나라가 이 쪼개진 많은 국가들을 색깔로 통일을 시도하려 한다.

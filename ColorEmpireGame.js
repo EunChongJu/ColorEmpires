@@ -10,7 +10,7 @@
  * 3. 게임 방법은 주변의 색깔로 바꾸면 그 색으로 바뀜으로 주변국가와 합병하는 것이다.
  * 4. 합병해나가면서 전체를 하나의 색깔로 채워나가는 게임이다.
  * 
- * 
+ * 여기서 맵의 각각의 셀은 색깔의 이름으로 지정되는 것이 아니라 컬러 배열의 인덱스 번호로 저장되는 것이다.
  * 
  * 
  * 
@@ -47,6 +47,14 @@ var CEG = function() {
 		}
 		
 		return map;
+	};
+	
+	this.setColorMap = function() {
+		for (var i = 0; i < this.colorMap.length; i++) {
+			for (var j = 0; j < this.colorMap[i].length; j++) {
+				this.colorMap[i][j] = parseInt(Math.random() * this.colorList.length);
+			}
+		}
 	};
 	
 	// 컬러를 바꾸기 시작한다. 그리고 주변과 같은 컬러는 바뀌는 컬러로 바뀐다.
@@ -136,5 +144,11 @@ var CEG = function() {
 
 // TEST ZONE
 var ceg = new CEG();
+
+var colorList = ['red', 'orange', 'green', 'blue'];
+ceg.startGame(10, 10, colorList, 'LT');
+
+console.dir(ceg);
+
 
 

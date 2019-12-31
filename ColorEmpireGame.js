@@ -59,15 +59,24 @@ var CEG = function() {
 	
 	// 컬러를 바꾸기 시작한다. 그리고 주변과 같은 컬러는 바뀌는 컬러로 바뀐다.
 	this.changeColor = function() {
-		
+		this.checkAround(function() {
+			
+		});
 	};
 	
 	// 주변국과 색깔이 일치하면 합병을 한다. 그리고 합병점수를 정산을 여기서 한다.
 	this.mergeColor = function() {
-		
+		this.checkAround(function() {
+			
+		});
 	};
 	
-	
+	// 주위를 둘러보면서 하는 행동이 똑같은 짓을 반복만 하니깐 콜백으로 처리.
+	this.checkAround = function(callback) {
+//		callback();
+		
+		
+	};
 	
 	
 	
@@ -148,7 +157,8 @@ var ceg = new CEG();
 var colorList = ['red', 'orange', 'green', 'blue'];
 ceg.startGame(10, 10, colorList, 'LT');
 
-console.dir(ceg);
+//console.dir(ceg);
+//ceg.setColorMap();
 
 
 

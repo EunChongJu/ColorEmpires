@@ -1,0 +1,260 @@
+@charset "utf-8";
+
+*{
+	border:0;
+	padding:0;
+	margin:0;
+	font-family:'Montserrat Alternates', sans-serif;
+}
+
+.wrap{
+	width:100%;
+	height:100%;
+}
+
+
+/* 게임 전 설정 사항 및 모든 것에 대한 스타일 */
+.before{
+	position:fixed;
+	top:0;
+	left:0;
+	display:block;
+	width:100%;
+	height:100%;
+	background:rgba(200,200,200,0.8);
+}
+.before-wrap{
+	display:flex;
+	flex-direction:column;
+	position:fixed;
+	top:50%;
+	left:50%;
+	width:50%;
+	height:50%;
+	background:rgba(0,0,0,0);
+	transform:translate(-50%,-50%);
+}
+.before-wrap>h1{
+	flex:1;
+}
+.before-select{
+	flex:6;
+	display:flex;
+	flex-direction:column;
+	background:#FFF;
+}
+.select-s{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+}
+.select-c{
+	flex:1;
+}
+.select-c>label{
+	display:block;
+	padding:6px 12px;
+	text-align:right;
+	font-size:1.6rem;
+}
+.select-c label input{
+	width:30%;
+	padding:5px 15px;
+	margin:4px 0;
+	font-size:1.4rem;
+	background:#EEE;
+}
+.select-c label input[type=text] {
+	width:90%;
+}
+
+.select-st{
+	border:2px solid #4CAF50;
+	padding:10px 15px;
+	margin:10px 0;
+	font-size:1.2rem;
+	background:#FFF;
+	color:#4CAF50;
+	transition:all 0.5s;
+}
+.select-st:hover{
+	background:#4CAF50;
+	color:#FFF;
+}
+
+/*Capital Start Position*/
+.select-c#c-cp{
+	display:flex;
+	flex-direction:row;
+}
+.select-c>label.cp {
+	flex:1;
+	display:inline-block;
+	text-align:left;
+	padding:0;
+	margin:0;
+	font-size:1px;
+}
+.cp{
+	cursor:pointer;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+.cp input{
+	opacity:0;
+	cursor:pointer;
+}
+
+.select-cp{
+	display:inline-block;
+	border:2px solid #1800d0;
+	background:#FFF;
+	color:#1800d0;
+	transition:all 0.5s;
+	cursor:pointer;
+}
+.select-cp:hover{
+	background:#1800d0;
+	color:#FFF;
+}
+/*Capital Position Select Button Styles*/
+.cp_wrap{display:flex;width:36px;height:36px;padding:0;margin:0;flex-direction:column;border:2px solid #FFF;}
+.cp_row{flex:1;display:flex;flex-direction:row;border:0;padding:0;margin:0;background:#FFF;}
+.cp_cell{flex:1;width:10px;height:10px;border:1px solid #FFF;padding:0;margin:0;font-size:1px;background:#1800d0;}
+.cp_cell:after{content:' ';}
+.cp_cell.fill{background:#2196F3;}
+.cp_wrap:hover, .cp_wrap:hover .cp_cell{border-color:#1800d0;background:#FFF;}
+.cp_wrap:hover .cp_cell.fill{background:#2196F3;}
+
+.cp input:checked ~ .cp_wrap{border-color:#1800d0;background:#FFF;}
+.cp input:checked ~ .cp_wrap .cp_cell{border-color:#1800d0;background:#FFF;}
+.cp input:checked ~ .cp_wrap .cp_cell.fill{background:#2196F3;}
+
+
+
+.select-mn{
+	display:inline-block;
+	border:2px solid #CCC;
+	padding:10px 15px;
+	margin:4px 2px;
+	background:#FFF;
+	font-size:1.2rem;
+	color:#CCC;
+	transition:all 0.5s;
+}
+.select-mn:hover{
+	border-color:#777;
+	color:#777;
+}
+/*select Level Button*/
+.select-lv{
+	display:inline-block;
+	border:2px solid;
+	padding:10px 15px;
+	margin-top:40px;
+	margin-left:5px;
+	background:#FFF;
+	font-size:1.4rem;
+	color:#FFF;
+	transition:all 0.5s;
+}
+.select-lv:first-child{
+	margin-left:40px;
+}
+.select-lv:nth-child(1){
+	border-color:#f3d321;
+	color:#f3d321;
+}
+.select-lv:nth-child(2){
+	border-color:#ff9800;
+	color:#ff9800;
+}
+.select-lv:nth-child(3){
+	border-color:#f44336;
+	color:#f44336;
+}
+.select-lv:nth-child(1):hover{
+	background:#f3d321;
+	color:#FFF;
+}
+.select-lv:nth-child(2):hover{
+	background:#ff9800;
+	color:#FFF;
+}
+.select-lv:nth-child(3):hover{
+	background:#f44336;
+	color:#FFF;
+}
+
+
+
+/* 게임 중일때의 스타일 */
+.game{
+	display:none;
+}
+.frame{
+	position:fixed;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.map{
+	display:flex;
+	flex-direction:column;
+}
+.map-row{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+}
+.map-cell{
+	content:'&nbsp;';
+	flex:1;
+	width:30px;
+	height:30px;
+	border:1px solid #FFF;
+	background:#333;
+	transition:all 0.5s;
+}
+
+
+
+.colors{
+	display:flex;
+	flex-direction:row;
+	position:fixed;
+	left:50%;
+	bottom:0%;
+	border:3px solid #BBB;
+	transform:translate(-50%,-50%);
+}
+.color{
+	flex:1;
+	width:40px;
+	padding:4px 0px;
+	text-align:center;
+	vertical-align:middle;
+}
+#id-r{background:#ff0000; color:#fff;}
+#id-o{background:#ff8400; color:#fff;}
+#id-y{background:#ffdd00; color:#000;}
+#id-g{background:#00da26; color:#000;}
+#id-s{background:#00a2ff; color:#fff;}
+#id-b{background:#1900ff; color:#fff;}
+#id-p{background:#a200ff; color:#fff;}
+#id-w{background:#fff; color:#000;}
+
+
+/* 게임 오버 후 */
+.after{
+	display:none;
+}
+
+
+
+
+
+
+

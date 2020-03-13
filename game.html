@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title>Color Empires Game</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<link href="css/game.css" rel="stylesheet">
+		<script src="js/game.js"></script>
+		<script src="js/core.js"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="before" id="before">
+				<div class="before-wrap">
+					<h1>Color Empires Game 1.0</h1>
+					<div class="before-select">
+						<div class="select-s">
+							<div class="select-c">
+<!--								Image of Flag // can select flag-->
+								
+							</div>
+							<div class="select-c">
+								<label>Country Name: <input type="text" id="country" value="Republic of Stropia" required></label>
+								<label>
+									<button class="select-mn" onclick="randomNamingCountry();">Random Country <i class='fas fa-random'></i></button>
+								</label>
+							</div>
+						</div>
+						<div class="select-s">
+							<div class="select-c">
+								<label>Capital Position(Starting Position):</label>
+							</div>
+							<div class="select-c" id="c-cp">
+								<!--NW-->
+								<label class="cp">
+									<input type="radio" name="cp" value="1" checked>
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell fill"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--NE-->
+								<label class="cp">
+									<input type="radio" name="cp" value="2">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell fill"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--SW-->
+								<label class="cp">
+									<input type="radio" name="cp" value="3">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell fill"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--SE-->
+								<label class="cp">
+									<input type="radio" name="cp" value="4">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell fill"></div>
+										</div>
+									</div>
+								</label>
+								<!--N-->
+								<label class="cp">
+									<input type="radio" name="cp" value="5">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell fill"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--W-->
+								<label class="cp">
+									<input type="radio" name="cp" value="6">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell fill"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--S-->
+								<label class="cp">
+									<input type="radio" name="cp" value="7">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell fill"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--E-->
+								<label class="cp">
+									<input type="radio" name="cp" value="8">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell fill"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+								<!--center-->
+								<label class="cp">
+									<input type="radio" name="cp" value="9">
+									<div class="cp_wrap">
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell fill"></div>
+											<div class="cp_cell"></div>
+										</div>
+										<div class="cp_row">
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+											<div class="cp_cell"></div>
+										</div>
+									</div>
+								</label>
+							</div>
+						</div>
+						<div class="select-s"><!--rows-->
+							<div class="select-c"><!--columns-->
+								<button class="select-lv" onclick="selectLv(1);">Easy</button>
+								<button class="select-lv" onclick="selectLv(2);">Middium</button>
+								<button class="select-lv" onclick="selectLv(3);">Hard</button>
+							</div>
+							<div class="select-c">
+								<label>Width: <input type="number" id="width" value="5" min="5" max="50" required></label>
+								<label>Height: <input type="number" id="height" value="5" min="5" max="50" required></label>
+							</div>
+						</div>
+						<div class="select-s">
+							<div class="select-c">
+								
+							</div>
+							<div class="select-c">
+								
+							</div>
+						</div>
+						<div class="select-s">
+							<div class="select-c">&nbsp;</div>
+							<div class="select-c">&nbsp;</div>
+							<div class="select-c">&nbsp;</div>
+							<div class="select-c">
+								<button class="select-mn" onclick="resetting();">Reset <i class='fas fa-redo-alt'></i></button>
+								<button class="select-st" onclick="gameStart();">Start!</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			<div class="game" id="game">
+				<div class="frame">
+					<div class="map" id="map">
+						<div class="map-row">
+							<div class="map-cell" id="id-0000"></div>
+							<div class="map-cell" id="id-0001"></div>
+							<div class="map-cell" id="id-0002"></div>
+							<div class="map-cell" id="id-0003"></div>
+							<div class="map-cell" id="id-0004"></div>
+							<div class="map-cell" id="id-0005"></div>
+						</div>
+						<div class="map-row">
+							<div class="map-cell" id="id-0100"></div>
+							<div class="map-cell" id="id-0101"></div>
+							<div class="map-cell" id="id-0102"></div>
+							<div class="map-cell" id="id-0103"></div>
+							<div class="map-cell" id="id-0104"></div>
+							<div class="map-cell" id="id-0105"></div>
+						</div>
+						<div class="map-row">
+							<div class="map-cell" id="id-0200"></div>
+							<div class="map-cell" id="id-0201"></div>
+							<div class="map-cell" id="id-0202"></div>
+							<div class="map-cell" id="id-0203"></div>
+							<div class="map-cell" id="id-0204"></div>
+							<div class="map-cell" id="id-0205"></div>
+						</div>
+						<div class="map-row">
+							<div class="map-cell" id="id-0300"></div>
+							<div class="map-cell" id="id-0301"></div>
+							<div class="map-cell" id="id-0302"></div>
+							<div class="map-cell" id="id-0303"></div>
+							<div class="map-cell" id="id-0304"></div>
+							<div class="map-cell" id="id-0305"></div>
+						</div>
+						<div class="map-row">
+							<div class="map-cell" id="id-0400"></div>
+							<div class="map-cell" id="id-0401"></div>
+							<div class="map-cell" id="id-0402"></div>
+							<div class="map-cell" id="id-0403"></div>
+							<div class="map-cell" id="id-0404"></div>
+							<div class="map-cell" id="id-0405"></div>
+						</div>
+						<div class="map-row">
+							<div class="map-cell" id="id-0500"></div>
+							<div class="map-cell" id="id-0501"></div>
+							<div class="map-cell" id="id-0502"></div>
+							<div class="map-cell" id="id-0503"></div>
+							<div class="map-cell" id="id-0504"></div>
+							<div class="map-cell" id="id-0505"></div>
+						</div>
+					</div>
+				</div>
+				<div class="colors" id="colors">
+					<div class="color" id="id-r">R</div>
+					<div class="color" id="id-o">O</div>
+					<div class="color" id="id-y">Y</div>
+					<div class="color" id="id-g">G</div>
+					<div class="color" id="id-s">S</div>
+					<div class="color" id="id-b">B</div>
+					<div class="color" id="id-p">P</div>
+					<div class="color" id="id-w">W</div>
+				</div>
+			</div>
+			<div class="after" id="after">
+				<div class="after-wrap">
+					
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

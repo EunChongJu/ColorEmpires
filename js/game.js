@@ -26,13 +26,12 @@ window.oncontextmenu = function () {
 function randomNamingCountry() {
 	document.getElementById('country').value = namingCountry();
 }
-
 var namingCountry = function() {
 	var countryMem = new NameCountryMemory();
 	
 	return countryMem.getCountryName();
 }
-
+// Country Naming Algorithm: function class
 var NameCountryMemory = function() {
 	this.COUNTRY_MEM = [
 		// 0
@@ -77,7 +76,18 @@ var NameCountryMemory = function() {
 		var countryName = '';
 		
 		for (var j = 0; j < 4; j++) {
-			countryName += ((j!=0)?((arr[j-1]==0)?'':((arr[j]==0)?'':' ')):'') + this.COUNTRY_MEM[j][arr[j]];
+			if ((j != 0) || (j != 3)) {
+				if ((j==1) && (arr[j-1] != 0)) {
+					countryName += ' ';
+				}
+				if ((j==2) && (arr[j-1] != 0)) {
+					countryName += ' ';
+				}
+			}
+			countryName += this.COUNTRY_MEM[j][arr[j]];
+			if ((j==2) && (arr[j+1] != 0)) {
+				countryName += ' ';
+			}
 		}
 		
 		return countryName;

@@ -6,10 +6,11 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<link href="css/game.css" rel="stylesheet">
+		<link href="css/flag.css" rel="stylesheet">
 		<script src="js/game.js"></script>
 		<script src="js/core.js"></script>
 	</head>
-	<body>
+	<body onload="startSetFlag();">
 		<div class="wrap">
 			<div class="before" id="before">
 				<div class="before-wrap">
@@ -17,8 +18,58 @@
 					<div class="before-select">
 						<div class="select-s">
 							<div class="select-c">
-<!--								Image of Flag // can select flag-->
-								
+								<div class="select-f">
+									<div class="create-flag-wrap">
+										<div class="create-flag-box">
+											<div class="flag">
+												<div class="horizon">
+													<div class="h h0"></div>
+													<div class="h h1"></div>
+													<div class="h h2"></div>
+												</div>
+												<div class="vertical">
+													<div class="v v0"></div>
+													<div class="v v1"></div>
+													<div class="v v2"></div>
+												</div>
+												<div class="czech">
+													<div class="cz cz0"></div>	<!--왼쪽의 삼각형 부분-->
+													<div class="czw">
+														<div class="cz cz1"></div>
+														<div class="cz cz2"></div>
+													</div>
+												</div>
+												<div class="circle">
+													<div class="cir cir0"></div>	<!--가운데의 원형 부분-->
+													<div class="cir cir1"></div>	<!--배경 부분-->
+												</div>
+												<div class="windows">
+													<div class="winw">
+														<div class="win win0"></div>	<!--Red-->
+														<div class="win win1"></div>	<!--Green-->
+													</div>
+													<div class="winw">
+														<div class="win win2"></div>	<!--Blue-->
+														<div class="win win3"></div>	<!--Yellow-->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="create-flag-masque">
+											<button class="create-flag-plus" onclick="openEditFlag();">
+<!--												Change to Flag-->
+												<i class="fas fa-pencil-alt"></i>
+<!--
+												<i class="far fa-object-ungroup"></i>
+												<i class="far fa-object-group"></i>
+												<i class="fas fa-marker"></i>
+												<i class="fas fa-eye-dropper"></i>
+												<i class="fas fa-fill-drip"></i>
+-->
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="select-c">
 								<label>Country Name: <input type="text" id="country" value="Republic of Stropia" required></label>
@@ -236,10 +287,10 @@
 						</div>
 						<div class="select-s">
 							<div class="select-c">
-								
+								Copyright &copy; 2020, VOLTA INC. All rights Reserved.
 							</div>
 							<div class="select-c">
-								
+								&nbsp;
 							</div>
 						</div>
 						<div class="select-s">
@@ -254,7 +305,145 @@
 						
 					</div>
 				</div>
-				
+				<div id="editFlag" class="modal">
+					<div class="modal-wrap">
+						<div class="container">
+							<h1 style="text-align:left;">Edit Flag: Create Flag</h1>
+							<span onclick="closeEditFlag();" class="close" title="Close Modal">&times;</span>
+						</div>
+						<div class="container">
+							<div class="t-wrap">
+								<div class="t-row">
+									<div class="t-coulmn">
+										<h2>show Flag</h2>
+										<div class="flag" id="show">
+											<div class="horizon">
+												<div class="h h0"></div>
+												<div class="h h1"></div>
+												<div class="h h2"></div>
+											</div>
+											<div class="vertical">
+												<div class="v v0"></div>
+												<div class="v v1"></div>
+												<div class="v v2"></div>
+											</div>
+											<div class="czech">
+												<div class="cz cz0"></div>	<!--왼쪽의 삼각형 부분-->
+												<div class="czw">
+													<div class="cz cz1"></div>
+													<div class="cz cz2"></div>
+												</div>
+											</div>
+											<div class="circle">
+												<div class="cir cir0"></div>	<!--가운데의 원형 부분-->
+												<div class="cir cir1"></div>	<!--배경 부분-->
+											</div>
+											<div class="windows">
+												<div class="winw">
+													<div class="win win0"></div>	<!--Red-->
+													<div class="win win1"></div>	<!--Green-->
+												</div>
+												<div class="winw">
+													<div class="win win2"></div>	<!--Blue-->
+													<div class="win win3"></div>	<!--Yellow-->
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="t-coulmn">
+										<h2>flag type</h2>
+										<div class="divi-wrap">
+											<button class="divi-btn" onclick="showFlag('horizon');">
+												<img src="images/h.png" alt="division horizon">
+											</button>
+											<button class="divi-btn" onclick="showFlag('vertical');">
+												<img src="images/v.png" alt="division vertical">
+											</button>
+											<button class="divi-btn" onclick="showFlag('czech');">
+												<img src="images/cz.png" alt="type czech">
+											</button>
+											<button class="divi-btn" onclick="showFlag('circle');">
+												<img src="images/cir.png" alt="circle">
+											</button>
+											<button class="divi-btn" onclick="showFlag('windows');">
+												<img src="images/win.png" alt="windows">
+											</button>
+										</div>
+									</div>
+									<div class="t-coulmn">
+										<!--horizon이나 vertical에만 적용, 그외에는 선택권 없음-->
+										<h2>column Division</h2>
+										<div class="divi-wrap">
+											<button class="divi-btn" onclick="divideFlag(1);">
+												<img src="images/1.png" alt="division horizon">
+											</button>
+											<button class="divi-btn" onclick="divideFlag(2);">
+												<img src="images/2.png" alt="division vertical">
+											</button>
+											<button class="divi-btn" onclick="divideFlag(3);">
+												<img src="images/3.png" alt="type czech">
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="t-row">
+									<div class="t-column">
+										<h2>flag colors</h2>
+										<div class="fc-wrap">
+											<div class="fc-rows">
+												<buttom class="fc-cell z">0</buttom>
+												<buttom class="fc-cell r">R</buttom>
+												<buttom class="fc-cell o">O</buttom>
+												<buttom class="fc-cell y">Y</buttom>
+												<buttom class="fc-cell g">G</buttom>
+												<buttom class="fc-cell s">S</buttom>
+												<buttom class="fc-cell b">B</buttom>
+												<buttom class="fc-cell p">P</buttom>
+												<buttom class="fc-cell w">W</buttom>
+											</div>
+											<div class="fc-rows">
+												<buttom class="fc-cell z">0</buttom>
+												<buttom class="fc-cell r">R</buttom>
+												<buttom class="fc-cell o">O</buttom>
+												<buttom class="fc-cell y">Y</buttom>
+												<buttom class="fc-cell g">G</buttom>
+												<buttom class="fc-cell s">S</buttom>
+												<buttom class="fc-cell b">B</buttom>
+												<buttom class="fc-cell p">P</buttom>
+												<buttom class="fc-cell w">W</buttom>
+											</div>
+											<div class="fc-rows">
+												<buttom class="fc-cell z">0</buttom>
+												<buttom class="fc-cell r">R</buttom>
+												<buttom class="fc-cell o">O</buttom>
+												<buttom class="fc-cell y">Y</buttom>
+												<buttom class="fc-cell g">G</buttom>
+												<buttom class="fc-cell s">S</buttom>
+												<buttom class="fc-cell b">B</buttom>
+												<buttom class="fc-cell p">P</buttom>
+												<buttom class="fc-cell w">W</buttom>
+											</div>
+											<div class="fc-rows">
+												<buttom class="fc-cell z">0</buttom>
+												<buttom class="fc-cell r">R</buttom>
+												<buttom class="fc-cell o">O</buttom>
+												<buttom class="fc-cell y">Y</buttom>
+												<buttom class="fc-cell g">G</buttom>
+												<buttom class="fc-cell s">S</buttom>
+												<buttom class="fc-cell b">B</buttom>
+												<buttom class="fc-cell p">P</buttom>
+												<buttom class="fc-cell w">W</buttom>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<button class="cancelbtn" onclick="closeEditFlag();">Done</button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="game" id="game">
 				<div class="frame">

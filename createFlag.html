@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			*{
+				border:0;
+				padding:0;
+				margin:0;
+			}
+			body {
+				background:#FFF;
+			}
+/*			Flag Setting */
+			.flag{
+				width:600px;
+				height:600px;
+				border:1px solid #000;
+				margin:150px 150px;
+				overflow:hidden;
+			}
+			.flag>div{
+				width:100%;
+				height:100%;
+			}
+			.h:after, .v:after, .cz:after, .cir:after {
+				content:'';
+			}
+			.h, .v {
+				flex:1;
+			}
+			.horizon{
+				display:none;
+				flex-direction:row;
+			}
+			.vertical{
+				display:none;
+				flex-direction:column;
+			}
+			.czech{
+				display:none;
+			}
+			.czech>#cz0 {
+				position:relative;
+				top:50%;
+				left:-21%;
+				width:100%;
+				height:100%;
+				transform:translate(-50%,-50%) rotate(45deg);
+				z-index:5;
+			}
+			.czw{
+				position:relative;
+				top:0;
+				left:0;
+				display:flex;
+				flex-direction:column;
+				width:100%;
+				height:100%;
+				transform:translate(0%,-100%);
+			}
+			.czech #cz1, .czech #cz2 {
+				flex:1;
+			}
+			.circle{
+				display:none;
+			}
+			.circle>#cir0 {
+				position:relative;
+				top:50%;
+				left:50%;
+				width:50%;
+				height:50%;
+				border-radius:50%;
+				transform:translate(-50%,-50%);
+			}
+			.windows{
+				display:flex;
+				flex-direction:column;
+			}
+			.winw{
+				flex:1;
+				display:flex;
+				flex-direction:row;
+			}
+			.winw>div{
+				flex:1;
+			}
+			.windows #win0 {
+				background:#F00;
+			}
+			.windows #win1 {
+				background:#0F0;
+			}
+			.windows #win2 {
+				background:#00F;
+			}
+			.windows #win3 {
+				background:#FF0;
+			}
+			
+			
+			#h0{
+				background:#2121f3;
+			}
+			#h1{
+				background:#FFF;
+			}
+			#h2{
+				background:#F00;
+			}
+			#v0{
+				background:#2121f3;
+			}
+			#v1{
+				background:#000;
+			}
+			#v2{
+				background:#FFF;
+			}
+			#cz0{
+				background:#00F;
+			}
+			#cz1{
+				background:#FFF;
+			}
+			#cz2{
+				background:#F00;
+			}
+			#cir0{
+				background:#2196F3;
+			}
+			#cir1{
+				background:#000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="flag">
+				<div class="horizon">
+					<div class="h" id="h0"></div>
+					<div class="h" id="h1"></div>
+					<div class="h" id="h2"></div>
+				</div>
+				<div class="vertical">
+					<div class="v" id="v0"></div>
+					<div class="v" id="v1"></div>
+					<div class="v" id="v2"></div>
+				</div>
+				<div class="czech">
+					<div class="cz" id="cz0"></div>	<!--왼쪽의 삼각형 부분-->
+					<div class="czw">
+						<div class="cz" id="cz1"></div>
+						<div class="cz" id="cz2"></div>
+					</div>
+				</div>
+				<div class="circle">
+					<div class="cir" id="cir0"></div>	<!--가운데의 원형 부분-->
+					<div class="cir" id="cir1"></div>	<!--배경 부분-->
+				</div>
+				<div class="windows">
+					<div class="winw">
+						<div class="win" id="win0"></div>	<!--Red-->
+						<div class="win" id="win1"></div>	<!--Green-->
+					</div>
+					<div class="winw">
+						<div class="win" id="win2"></div>	<!--Blue-->
+						<div class="win" id="win3"></div>	<!--Yellow-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

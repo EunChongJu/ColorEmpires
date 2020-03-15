@@ -2,6 +2,7 @@
 
 *{
 	border:0;
+	box-sizing:border-box;
 	padding:0;
 	margin:0;
 	font-family:'Montserrat Alternates', sans-serif;
@@ -68,6 +69,43 @@
 	width:90%;
 }
 
+/*Flag Setting and Frame*/
+.select-f{
+	text-align:center;
+	align-content:center;
+}
+.create-flag-wrap{
+	position:relative;
+	width:100px;
+	height:100px;
+	margin:10px auto;
+}
+.create-flag-box{
+	position:absolute;
+	width:100px;
+	height:100px;
+}
+.create-flag-masque{
+	position:absolute;
+	width:100px;
+	height:100px;
+}
+.create-flag-plus{
+	opacity:0;
+	width:100%;
+	height:100%;
+	box-sizing:border-box;
+	background:rgba(0,0,0,0.3);
+	font-size:1.5em;
+	color:#FFF;
+	cursor:pointer;
+	transition:all 0.4s;
+}
+.create-flag-plus:hover{
+	opacity:1;
+	text-shadow:0px 0px 20px #FFF;
+}
+
 .select-st{
 	border:2px solid #4CAF50;
 	padding:10px 15px;
@@ -87,7 +125,7 @@
 	display:flex;
 	flex-direction:row;
 }
-.select-c>label.cp {
+.select-c>label.cp{
 	flex:1;
 	display:inline-block;
 	text-align:left;
@@ -255,6 +293,148 @@
 
 
 
+
+/* The Modal (background) */
+.modal{
+	position:fixed; /* Stay in place */
+	left:0;
+	top:0;
+	display:none; /* Hidden by default */
+	width:100%; /* Full width */
+	height:100%; /* Full height */
+	padding:120px 240px;
+	background-color:rgb(0,0,0); /* Fallback color */
+	background-color:rgba(0,0,0,0.4); /* Black w/ opacity */
+	overflow:auto; /* Enable scroll if needed */
+	z-index:1; /* Sit on top */
+	
+}
+.modal>.modal-wrap {
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	height:100%;
+	-webkit-animation:animatezoom 0.6s;
+	animation:animatezoom 0.6s
+}
+.close{
+	position:absolute;
+	color:#000;
+	font-size:35px;
+	font-weight:bold;
+	transform:translate(-100%, -100%);
+}
+.close:hover, .close:focus{
+	color:red;
+	cursor:pointer;
+}
+
+.container{
+	flex:16;
+	padding:16px;
+	background:#EEE;
+}
+.container:first-child, .container:last-child{
+	flex:1;
+	background:#CCC;
+	text-align:right;
+}
+.t-wrap{
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	height:100%;
+}
+.t-row{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+	width:100%;
+	height:100%;
+}
+.t-column{
+	flex:1;
+	width:100%;
+	height:100%;
+}
+.divi-wrap{
+	display:flex;
+	flex-direction:column;
+	height:100%;
+	background:#FFF;
+}
+.divi-btn{
+	flex:1;
+	box-sizing:border-box;
+	padding:0;
+	margin:0;
+	background:#FFF;
+}
+.divi-btn>img{
+	width:40%;
+	max-width:100%;
+	padding:0;
+	margin:0;
+}
+
+.fc-wrap{
+	display:flex;
+	flex-direction:column;
+	width:70%;
+}
+.fc-rows{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+	margin:10px;
+	border:5px solid #AAA;
+	border-radius:15px;
+	background:#AAA;
+}
+.fc-cell{
+	flex:1;
+	padding:10px;
+	margin:5px;
+	text-align:center;
+	cursor:pointer;
+}
+.fc-cell.z{background:#000; color:#fff;}
+.fc-cell.r{background:#ff0000; color:#fff;}
+.fc-cell.o{background:#ff8400; color:#fff;}
+.fc-cell.y{background:#ffdd00; color:#000;}
+.fc-cell.g{background:#00da26; color:#000;}
+.fc-cell.s{background:#00a2ff; color:#fff;}
+.fc-cell.b{background:#1900ff; color:#fff;}
+.fc-cell.p{background:#a200ff; color:#fff;}
+.fc-cell.w{background:#fff; color:#000;}
+
+.cancelbtn{
+	width:auto;
+	padding:10px 18px;
+	background-color:#4CAF50;
+	font-size:1.2em;
+	color:#FFF;
+}
+
+/* Add Zoom Animation */
+@-webkit-keyframes animatezoom{
+	from{-webkit-transform:scale(0)} 
+	to{-webkit-transform:scale(1)}
+}
+  
+@keyframes animatezoom{
+	from{transform:scale(0)} 
+	to{transform:scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+/*
+@media screen and (max-width:300px){
+	.cancelbtn{
+		width:100%;
+	}
+}
+*/
 
 
 

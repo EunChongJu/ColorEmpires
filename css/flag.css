@@ -1,0 +1,126 @@
+/* Flag Setting */
+.flag{
+	width:100px;
+	height:100px;
+	border:1px solid #000;
+	overflow:hidden;
+}
+.flag#show{
+	position:relative;
+	width:400px;
+	height:400px;
+}
+.flag>div{
+	width:100%;
+	height:100%;
+}
+.h:after, .v:after, .cz:after, .cir:after {
+	content:'';
+}
+.h, .v {
+	flex:1;
+}
+.horizon{
+	flex-direction:row;
+}
+.vertical{
+	flex-direction:column;
+}
+.czech{
+	content:'';
+}
+.czech>#cz0 {
+	position:relative;
+	top:50%;
+	left:-21%;
+	width:100%;
+	height:100%;
+	transform:translate(-50%,-50%) rotate(45deg);
+	z-index:5;
+}
+.czw{
+	position:relative;
+	top:0;
+	left:0;
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	height:100%;
+	transform:translate(0%,-100%);
+}
+.czech .cz1, .czech .cz2 {
+	flex:1;
+}
+.circle{
+	content:'';
+}
+.circle>.cir0 {
+	position:relative;
+	top:50%;
+	left:50%;
+	width:50%;
+	height:50%;
+	border-radius:50%;
+	transform:translate(-50%,-50%);
+}
+.windows{
+	display:flex;
+	flex-direction:column;
+}
+.winw{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+}
+.winw>.win{
+	flex:1;
+}
+.windows .win0 {
+	background:#F00;
+}
+.windows .win1 {
+	background:#0F0;
+}
+.windows .win2 {
+	background:#00F;
+}
+.windows .win3 {
+	background:#FF0;
+}
+
+/* Javascript에 의해 색깔이 변경될 것임. 이건 기본값. 분할은 자바스크립트에 의해 변경될 것임. */
+/* display:none;으로 분할 수를 조절 가능하다 */
+.h0{
+	background:#2121f3;
+}
+.h1{
+	background:#FFF;
+}
+.h2{
+	background:#F00;
+}
+.v0{
+	background:#2182f3;
+}
+.v1{
+	background:#000;
+}
+.v2{
+	background:#FFF;
+/*	display:none;*/
+}
+.cz0{
+	background:#00F;
+}
+.cz1{
+	background:#FFF;
+}
+.cz2{
+	background:#F00;
+}
+.cir0{
+	background:#2196F3;
+}
+.cir1{
+	background:#000;
+}

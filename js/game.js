@@ -16,10 +16,15 @@
  * 
  */
 
+// 기본 필수 변수
+var divide = 3;
+
 // can't active right click to menu for relax doing a game
 window.oncontextmenu = function () {
 	return false;
 };
+
+
 
 
 // Create Flag
@@ -244,9 +249,19 @@ function closeEditFlag() {
 	document.getElementById('editFlag').style.display='none';
 }
 
+
+
 function startSetFlag() {
 	hideAllFlag();
+	startSetFlagColors();
 	showFlag('horizon');
+}
+
+function startSetFlagColors() {
+	setFlagColors(0, 'R');
+	setFlagColors(1, 'G');
+	setFlagColors(2, 'B');
+	setFlagColors(3, 'Y');
 }
 
 function hideAllFlag() {
@@ -260,16 +275,37 @@ function showFlag(id) {
 	
 	switch (id) {
 		case 'horizon':
+			showFlagFlex(id);
+			disableOffDivide();
+			divideFlag(divide);
+			break;
 		case 'vertical':
+			showFlagFlex(id);
+			disableOffDivide();
+			divideFlag(divide);
+			break;
 		case 'windows':
 			showFlagFlex(id);
+			disableOnDivide();
+			divideFlag(4);
 			break;
 		case 'czech':
+			showFlagBlock(id);
+			disableOnDivide();
+			divideFlag(3);
+			break;
 		case 'circle':
 			showFlagBlock(id);
+			disableOnDivide();
+			divideFlag(2);
 			break;
 	}
 }
+
+function setDivideNum(num) {
+	divide = num;
+}
+
 function showFlagFlex(id){
 	for (let el of document.querySelectorAll('.'+id)) {
 		el.style.display = 'flex';
@@ -285,18 +321,103 @@ function hideFlag(id) {
 }
 
 function divideFlag(num) {
-	// 플래그 안의 갯수를 분할한다. 그전에 먼저 다 숨기고 하나씩 드러내는 것이다.
-}
-
-function changeFlagColor(id, color) {
-	for (let el of document.querySelectorAll('.'+id)) el.style.background = color;
-}
-
-function showColorPalette(num) {
-	hideColorPalette(4);	// 팔레트를 전부 숨기고 다시 표시하도록 한다.
+	hideColorPalette(4);
+	hideAllDivideFlag();
+	
 	for (var i = 1; i <= num; i++) {
-		document.querySelector('.fc-rows:nth-child('+i+')').style.display = 'block';
+		showColorPalette(i);
+		showDivideFlag(i-1);
 	}
+}
+
+function showDivideFlag(num) {
+	for (let el of document.querySelectorAll('.h'+num)) el.style.display = 'block';
+	for (let el of document.querySelectorAll('.v'+num)) el.style.display = 'block';
+}
+
+function hideAllDivideFlag() {
+	for (var i = 1; i <= 4; i++) {
+		for (let el of document.querySelectorAll('.h'+i)) el.style.display = 'none';
+		for (let el of document.querySelectorAll('.v'+i)) el.style.display = 'none';
+	}
+}
+
+function setFlagColors(id, color) {	// id: 몇번째(숫자) 부분을, color 이 색으로 염색
+	for (let el of document.querySelectorAll('.h'+id)) {
+		el.style.background = colorSet(color);
+	}
+	for (let el of document.querySelectorAll('.v'+id)) {
+		el.style.background = colorSet(color);
+	}
+	for (let el of document.querySelectorAll('.cz'+id)) {
+		el.style.background = colorSet(color);
+	}
+	for (let el of document.querySelectorAll('.cir'+id)) {
+		el.style.background = colorSet(color);
+	}
+	for (let el of document.querySelectorAll('.win'+id)) {
+		el.style.background = colorSet(color);
+	}
+}
+
+// 컬러 코드 약자를 HEX 형태로 변환하고 반환.
+function colorSet(color) {
+	var c = '';
+	switch(color) {
+		case 'Z':
+			c='#000';
+			break;
+		case 'R':
+			c='#f00';
+			break;
+		case 'O':
+			c='#ff8400';
+			break;
+		case 'Y':
+			c='#ffdd00';
+			break;
+		case 'G':
+			c='#00da26';
+			break;
+		case 'S':
+			c='#00a2ff';
+			break;
+		case 'B':
+			c='#1900ff';
+			break;
+		case 'P':
+			c='#a200ff';
+			break;
+		case 'W':
+			c='#fff';
+			break;
+	}
+	return c;
+}
+
+/*
+.fc-cell.z{background:#000; color:#fff;}
+.fc-cell.r{background:#ff0000; color:#fff;}
+.fc-cell.o{background:#ff8400; color:#fff;}
+.fc-cell.y{background:#ffdd00; color:#000;}
+.fc-cell.g{background:#00da26; color:#000;}
+.fc-cell.s{background:#00a2ff; color:#fff;}
+.fc-cell.b{background:#1900ff; color:#fff;}
+.fc-cell.p{background:#a200ff; color:#fff;}
+.fc-cell.w{background:#fff; color:#000;}
+*/
+
+// mod, click disabled : 모드가 가로세로 분할형이 아니라면, 클릭을 금지
+function disableOnDivide() {
+	for (let el of document.querySelectorAll('.fdivi')) el.disabled = true;
+}
+function disableOffDivide() {
+	for (let el of document.querySelectorAll('.fdivi')) el.disabled = false;
+}
+
+// show or hide color palette : 
+function showColorPalette(num) {
+	document.querySelector('.fc-rows:nth-child('+num+')').style.display = 'block';
 }
 function hideColorPalette(num) {
 	for (var i = 1; i <= num; i++) {
@@ -340,6 +461,14 @@ function allDisplayOff() {
 }
 
 
+
+
+
+
+
+
+
+/// before에 지정한 값을 game으로 넘기는 함수
 
 
 

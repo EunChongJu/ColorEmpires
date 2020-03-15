@@ -353,19 +353,19 @@
 									<div class="t-coulmn">
 										<h2>flag type</h2>
 										<div class="divi-wrap">
-											<button class="divi-btn" onclick="showFlag('horizon');">
+											<button class="divi-btn ftype" onclick="showFlag('horizon');">
 												<img src="images/h.png" alt="division horizon">
 											</button>
-											<button class="divi-btn" onclick="showFlag('vertical');">
+											<button class="divi-btn ftype" onclick="showFlag('vertical');">
 												<img src="images/v.png" alt="division vertical">
 											</button>
-											<button class="divi-btn" onclick="showFlag('czech');">
+											<button class="divi-btn ftype" onclick="showFlag('czech');">
 												<img src="images/cz.png" alt="type czech">
 											</button>
-											<button class="divi-btn" onclick="showFlag('circle');">
+											<button class="divi-btn ftype" onclick="showFlag('circle');">
 												<img src="images/cir.png" alt="circle">
 											</button>
-											<button class="divi-btn" onclick="showFlag('windows');">
+											<button class="divi-btn ftype" onclick="showFlag('windows');">
 												<img src="images/win.png" alt="windows">
 											</button>
 										</div>
@@ -374,13 +374,13 @@
 										<!--horizon이나 vertical에만 적용, 그외에는 선택권 없음-->
 										<h2>column Division</h2>
 										<div class="divi-wrap">
-											<button class="divi-btn" onclick="divideFlag(1);">
+											<button class="divi-btn fdivi" onclick="divideFlag(1); setDivideNum(1);">
 												<img src="images/1.png" alt="division horizon">
 											</button>
-											<button class="divi-btn" onclick="divideFlag(2);">
+											<button class="divi-btn fdivi" onclick="divideFlag(2); setDivideNum(2);">
 												<img src="images/2.png" alt="division vertical">
 											</button>
-											<button class="divi-btn" onclick="divideFlag(3);">
+											<button class="divi-btn fdivi" onclick="divideFlag(3); setDivideNum(3);">
 												<img src="images/3.png" alt="type czech">
 											</button>
 										</div>
@@ -391,48 +391,48 @@
 										<h2>flag colors</h2>
 										<div class="fc-wrap">
 											<div class="fc-rows">
-												<buttom class="fc-cell z">0</buttom>
-												<buttom class="fc-cell r">R</buttom>
-												<buttom class="fc-cell o">O</buttom>
-												<buttom class="fc-cell y">Y</buttom>
-												<buttom class="fc-cell g">G</buttom>
-												<buttom class="fc-cell s">S</buttom>
-												<buttom class="fc-cell b">B</buttom>
-												<buttom class="fc-cell p">P</buttom>
-												<buttom class="fc-cell w">W</buttom>
+												<buttom class="fc-cell z" onclick="setFlagColors(0,'Z');">0</buttom>
+												<buttom class="fc-cell r" onclick="setFlagColors(0,'R');">R</buttom>
+												<buttom class="fc-cell o" onclick="setFlagColors(0,'O');">O</buttom>
+												<buttom class="fc-cell y" onclick="setFlagColors(0,'Y');">Y</buttom>
+												<buttom class="fc-cell g" onclick="setFlagColors(0,'G');">G</buttom>
+												<buttom class="fc-cell s" onclick="setFlagColors(0,'S');">S</buttom>
+												<buttom class="fc-cell b" onclick="setFlagColors(0,'B');">B</buttom>
+												<buttom class="fc-cell p" onclick="setFlagColors(0,'P');">P</buttom>
+												<buttom class="fc-cell w" onclick="setFlagColors(0,'W');">W</buttom>
 											</div>
 											<div class="fc-rows">
-												<buttom class="fc-cell z">0</buttom>
-												<buttom class="fc-cell r">R</buttom>
-												<buttom class="fc-cell o">O</buttom>
-												<buttom class="fc-cell y">Y</buttom>
-												<buttom class="fc-cell g">G</buttom>
-												<buttom class="fc-cell s">S</buttom>
-												<buttom class="fc-cell b">B</buttom>
-												<buttom class="fc-cell p">P</buttom>
-												<buttom class="fc-cell w">W</buttom>
+												<buttom class="fc-cell z" onclick="setFlagColors(1,'Z');">0</buttom>
+												<buttom class="fc-cell r" onclick="setFlagColors(1,'R');">R</buttom>
+												<buttom class="fc-cell o" onclick="setFlagColors(1,'O');">O</buttom>
+												<buttom class="fc-cell y" onclick="setFlagColors(1,'Y');">Y</buttom>
+												<buttom class="fc-cell g" onclick="setFlagColors(1,'G');">G</buttom>
+												<buttom class="fc-cell s" onclick="setFlagColors(1,'S');">S</buttom>
+												<buttom class="fc-cell b" onclick="setFlagColors(1,'B');">B</buttom>
+												<buttom class="fc-cell p" onclick="setFlagColors(1,'P');">P</buttom>
+												<buttom class="fc-cell w" onclick="setFlagColors(1,'W');">W</buttom>
 											</div>
 											<div class="fc-rows">
-												<buttom class="fc-cell z">0</buttom>
-												<buttom class="fc-cell r">R</buttom>
-												<buttom class="fc-cell o">O</buttom>
-												<buttom class="fc-cell y">Y</buttom>
-												<buttom class="fc-cell g">G</buttom>
-												<buttom class="fc-cell s">S</buttom>
-												<buttom class="fc-cell b">B</buttom>
-												<buttom class="fc-cell p">P</buttom>
-												<buttom class="fc-cell w">W</buttom>
+												<buttom class="fc-cell z" onclick="setFlagColors(2,'Z');">0</buttom>
+												<buttom class="fc-cell r" onclick="setFlagColors(2,'R');">R</buttom>
+												<buttom class="fc-cell o" onclick="setFlagColors(2,'O');">O</buttom>
+												<buttom class="fc-cell y" onclick="setFlagColors(2,'Y');">Y</buttom>
+												<buttom class="fc-cell g" onclick="setFlagColors(2,'G');">G</buttom>
+												<buttom class="fc-cell s" onclick="setFlagColors(2,'S');">S</buttom>
+												<buttom class="fc-cell b" onclick="setFlagColors(2,'B');">B</buttom>
+												<buttom class="fc-cell p" onclick="setFlagColors(2,'P');">P</buttom>
+												<buttom class="fc-cell w" onclick="setFlagColors(2,'W');">W</buttom>
 											</div>
 											<div class="fc-rows">
-												<buttom class="fc-cell z">0</buttom>
-												<buttom class="fc-cell r">R</buttom>
-												<buttom class="fc-cell o">O</buttom>
-												<buttom class="fc-cell y">Y</buttom>
-												<buttom class="fc-cell g">G</buttom>
-												<buttom class="fc-cell s">S</buttom>
-												<buttom class="fc-cell b">B</buttom>
-												<buttom class="fc-cell p">P</buttom>
-												<buttom class="fc-cell w">W</buttom>
+												<buttom class="fc-cell z" onclick="setFlagColors(3,'Z');">0</buttom>
+												<buttom class="fc-cell r" onclick="setFlagColors(3,'R');">R</buttom>
+												<buttom class="fc-cell o" onclick="setFlagColors(3,'O');">O</buttom>
+												<buttom class="fc-cell y" onclick="setFlagColors(3,'Y');">Y</buttom>
+												<buttom class="fc-cell g" onclick="setFlagColors(3,'G');">G</buttom>
+												<buttom class="fc-cell s" onclick="setFlagColors(3,'S');">S</buttom>
+												<buttom class="fc-cell b" onclick="setFlagColors(3,'B');">B</buttom>
+												<buttom class="fc-cell p" onclick="setFlagColors(3,'P');">P</buttom>
+												<buttom class="fc-cell w" onclick="setFlagColors(3,'W');">W</buttom>
 											</div>
 										</div>
 									</div>

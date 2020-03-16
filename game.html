@@ -9,6 +9,8 @@
 		<link href="css/flag.css" rel="stylesheet">
 		<script src="js/game.js"></script>
 		<script src="js/core.js"></script>
+		<script src="js/flag.js"></script>
+		<script src="js/naming.js"></script>
 	</head>
 	<body onload="startSetFlag();">
 		<div class="wrap">
@@ -59,13 +61,6 @@
 											<button class="create-flag-plus" onclick="openEditFlag();">
 <!--												Change to Flag-->
 												<i class="fas fa-pencil-alt"></i>
-<!--
-												<i class="far fa-object-ungroup"></i>
-												<i class="far fa-object-group"></i>
-												<i class="fas fa-marker"></i>
-												<i class="fas fa-eye-dropper"></i>
-												<i class="fas fa-fill-drip"></i>
--->
 											</button>
 										</div>
 									</div>
@@ -282,7 +277,7 @@
 							</div>
 							<div class="select-c">
 								<label>Width: <input type="number" id="width" value="5" min="5" max="50" required></label>
-								<label>Height: <input type="number" id="height" value="5" min="5" max="50" required></label>
+								<label>Height: <input type="number" id="height" value="5" min="5" max="27" required></label>
 							</div>
 						</div>
 						<div class="select-s">
@@ -299,7 +294,7 @@
 							<div class="select-c">&nbsp;</div>
 							<div class="select-c">
 								<button class="select-mn" onclick="resetting();">Reset <i class='fas fa-redo-alt'></i></button>
-								<button class="select-st" onclick="gameStart();">Start!</button>
+								<button class="select-st" onclick="startNewGame();">Start!</button>
 							</div>
 						</div>
 						
@@ -446,7 +441,60 @@
 				</div>
 			</div>
 			<div class="game" id="game">
-				<div class="frame">
+				<div class="game-wrap">
+					<!--여기에 나라 이름과 국기가 나오고, 점수 현황과 점령지 수, 게임 현황, 게임중도 퇴장버튼 이 있음-->
+					<div class="country-wrap">
+						<div class="country-flag">
+							<div class="flag" id="game">
+								<div class="horizon">
+									<div class="h h0"></div>
+									<div class="h h1"></div>
+									<div class="h h2"></div>
+								</div>
+								<div class="vertical">
+									<div class="v v0"></div>
+									<div class="v v1"></div>
+									<div class="v v2"></div>
+								</div>
+								<div class="czech">
+									<div class="cz cz0"></div>	<!--왼쪽의 삼각형 부분-->
+									<div class="czw">
+										<div class="cz cz1"></div>
+										<div class="cz cz2"></div>
+									</div>
+								</div>
+								<div class="circle">
+									<div class="cir cir0"></div>	<!--가운데의 원형 부분-->
+									<div class="cir cir1"></div>	<!--배경 부분-->
+								</div>
+								<div class="windows">
+									<div class="winw">
+										<div class="win win0"></div>	<!--Red-->
+										<div class="win win1"></div>	<!--Green-->
+									</div>
+									<div class="winw">
+										<div class="win win2"></div>	<!--Blue-->
+										<div class="win win3"></div>	<!--Yellow-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="country-info">
+							<div class="info-name" id="cn">Republic of Stropia</div>
+							<div class="info-point">
+								<div class="info-cp">Capital Position: <span id="capitalPos">1</span></div>
+								<div class="info-conquer">Conquer : <span id="status-conquer">1</span>/<span id="status-max">100</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="game-take"><!--포인트 현황과 나가기 버튼이 있음.-->
+						&nbsp;
+					</div>
+				</div>
+				<div class="game-progress">
+					<div class="game-progress-bar" id="progress-bar"></div>
+				</div>
+				<div class="frame" id="frame">
 					<div class="map" id="map">
 						<div class="map-row">
 							<div class="map-cell" id="id-0000"></div>
@@ -456,57 +504,17 @@
 							<div class="map-cell" id="id-0004"></div>
 							<div class="map-cell" id="id-0005"></div>
 						</div>
-						<div class="map-row">
-							<div class="map-cell" id="id-0100"></div>
-							<div class="map-cell" id="id-0101"></div>
-							<div class="map-cell" id="id-0102"></div>
-							<div class="map-cell" id="id-0103"></div>
-							<div class="map-cell" id="id-0104"></div>
-							<div class="map-cell" id="id-0105"></div>
-						</div>
-						<div class="map-row">
-							<div class="map-cell" id="id-0200"></div>
-							<div class="map-cell" id="id-0201"></div>
-							<div class="map-cell" id="id-0202"></div>
-							<div class="map-cell" id="id-0203"></div>
-							<div class="map-cell" id="id-0204"></div>
-							<div class="map-cell" id="id-0205"></div>
-						</div>
-						<div class="map-row">
-							<div class="map-cell" id="id-0300"></div>
-							<div class="map-cell" id="id-0301"></div>
-							<div class="map-cell" id="id-0302"></div>
-							<div class="map-cell" id="id-0303"></div>
-							<div class="map-cell" id="id-0304"></div>
-							<div class="map-cell" id="id-0305"></div>
-						</div>
-						<div class="map-row">
-							<div class="map-cell" id="id-0400"></div>
-							<div class="map-cell" id="id-0401"></div>
-							<div class="map-cell" id="id-0402"></div>
-							<div class="map-cell" id="id-0403"></div>
-							<div class="map-cell" id="id-0404"></div>
-							<div class="map-cell" id="id-0405"></div>
-						</div>
-						<div class="map-row">
-							<div class="map-cell" id="id-0500"></div>
-							<div class="map-cell" id="id-0501"></div>
-							<div class="map-cell" id="id-0502"></div>
-							<div class="map-cell" id="id-0503"></div>
-							<div class="map-cell" id="id-0504"></div>
-							<div class="map-cell" id="id-0505"></div>
-						</div>
 					</div>
 				</div>
 				<div class="colors" id="colors">
-					<div class="color" id="id-r">R</div>
-					<div class="color" id="id-o">O</div>
-					<div class="color" id="id-y">Y</div>
-					<div class="color" id="id-g">G</div>
-					<div class="color" id="id-s">S</div>
-					<div class="color" id="id-b">B</div>
-					<div class="color" id="id-p">P</div>
-					<div class="color" id="id-w">W</div>
+					<div class="color" id="R">R</div>
+					<div class="color" id="O">O</div>
+					<div class="color" id="Y">Y</div>
+					<div class="color" id="G">G</div>
+					<div class="color" id="S">S</div>
+					<div class="color" id="B">B</div>
+					<div class="color" id="P">P</div>
+					<div class="color" id="W">W</div>
 				</div>
 			</div>
 			<div class="after" id="after">

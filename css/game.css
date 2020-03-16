@@ -114,6 +114,7 @@
 	background:#FFF;
 	color:#4CAF50;
 	transition:all 0.5s;
+	cursor:pointer;
 }
 .select-st:hover{
 	background:#4CAF50;
@@ -181,6 +182,7 @@
 	font-size:1.2rem;
 	color:#CCC;
 	transition:all 0.5s;
+	cursor:pointer;
 }
 .select-mn:hover{
 	border-color:#777;
@@ -197,6 +199,7 @@
 	font-size:1.4rem;
 	color:#FFF;
 	transition:all 0.5s;
+	cursor:pointer;
 }
 .select-lv:first-child{
 	margin-left:40px;
@@ -225,74 +228,6 @@
 	background:#f44336;
 	color:#FFF;
 }
-
-
-
-/* 게임 중일때의 스타일 */
-.game{
-	display:none;
-}
-.frame{
-	position:fixed;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-}
-.map{
-	display:flex;
-	flex-direction:column;
-}
-.map-row{
-	flex:1;
-	display:flex;
-	flex-direction:row;
-}
-.map-cell{
-	content:'&nbsp;';
-	flex:1;
-	width:30px;
-	height:30px;
-	border:1px solid #FFF;
-	background:#333;
-	transition:all 0.5s;
-}
-
-
-
-.colors{
-	display:flex;
-	flex-direction:row;
-	position:fixed;
-	left:50%;
-	bottom:0%;
-	border:3px solid #BBB;
-	transform:translate(-50%,-50%);
-}
-.color{
-	flex:1;
-	width:40px;
-	padding:4px 0px;
-	text-align:center;
-	vertical-align:middle;
-}
-#id-r{background:#ff0000; color:#fff;}
-#id-o{background:#ff8400; color:#fff;}
-#id-y{background:#ffdd00; color:#000;}
-#id-g{background:#00da26; color:#000;}
-#id-s{background:#00a2ff; color:#fff;}
-#id-b{background:#1900ff; color:#fff;}
-#id-p{background:#a200ff; color:#fff;}
-#id-w{background:#fff; color:#000;}
-
-
-/* 게임 오버 후 */
-.after{
-	display:none;
-}
-
-
-
-
 
 /* The Modal (background) */
 .modal{
@@ -323,6 +258,7 @@
 	font-size:35px;
 	font-weight:bold;
 	transform:translate(-100%, -100%);
+	cursor:pointer;
 }
 .close:hover, .close:focus{
 	color:red;
@@ -369,6 +305,7 @@
 	padding:0;
 	margin:0;
 	background:#FFF;
+	cursor:pointer;
 }
 .divi-btn>img{
 	width:40%;
@@ -440,4 +377,144 @@
 */
 
 
+
+
+/* 게임 중일때의 스타일 */
+.game{
+	display:none;
+}
+.game-wrap {
+	display:flex;
+	flex-direction:row;
+}
+.country-wrap{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+	width:100%;
+}
+.country-flag{
+	
+}
+.country-info{
+	flex:1;
+	display:flex;
+	flex-direction:column;
+}
+.info-name{
+	flex:1;
+	padding:14px 16px;
+	background:#DDD;
+	vertical-align:middle;
+	font-size:1.7em;
+}
+.info-point{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+}
+.info-cp{
+	flex:1;
+	background:#CCC;
+	padding:12px 10px;
+}
+.info-conquer{
+	flex:1;
+	padding:10px;
+	background:#AAA;
+	text-align:center;
+}
+#status-conquer{
+	font-size:1.6em;
+}
+#status-max {
+	font-size:1.2em;
+}
+.game-take{
+	flex:1;
+	width:100%;
+	background:#BBB;
+}
+
+.game-progress{
+	width: 100%;
+	height: 8px;
+	background: #ccc;
+}
+
+.game-progress-bar {
+	height: 8px;
+	background: #4caf50;
+	width: 0%;
+}
+
+.frame{
+	position:fixed;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.map{
+	display:flex;
+	flex-direction:column;
+}
+.map-row{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+}
+.map-row>div{
+	content:'&nbsp;';
+	flex:1;
+	width:30px;
+	height:30px;
+	border:1px solid #FFF;
+	text-align:center;
+	font-size:1.2em;
+	transition:all 0.5s;
+}
+#Z{background:#000000; color:#fff;}
+#R{background:#ff0000; color:#fff;}
+#O{background:#ff8400; color:#fff;}
+#Y{background:#ffdd00; color:#000;}
+#G{background:#00da26; color:#000;}
+#S{background:#00a2ff; color:#fff;}
+#B{background:#1900ff; color:#fff;}
+#P{background:#a200ff; color:#fff;}
+#W{background:#ffffff; color:#000;}
+
+.Z{background:#000000; color:#fff;}
+.R{background:#ff0000; color:#fff;}
+.O{background:#ff8400; color:#fff;}
+.Y{background:#ffdd00; color:#000;}
+.G{background:#00da26; color:#000;}
+.S{background:#00a2ff; color:#fff;}
+.B{background:#1900ff; color:#fff;}
+.P{background:#a200ff; color:#fff;}
+.W{background:#ffffff; color:#000;}
+
+
+.colors{
+	display:flex;
+	flex-direction:row;
+	position:fixed;
+	left:50%;
+	bottom:0%;
+	border:3px solid #BBB;
+	transform:translate(-50%,-50%);
+}
+.color{
+	flex:1;
+	width:40px;
+	padding:4px 0px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+
+/* 게임 오버 후 */
+.after{
+	display:none;
+}
 

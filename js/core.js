@@ -52,29 +52,19 @@ var coreCE = function() {
 		console.dir('point: '+option[1]);		// 계승된 포인트 (여기서 배열 형태로 저장됨)
 		console.dir('null: '+option[2]);		// 아무 의미 없음, temp격임.
 		*/
-		try {
-			if (this.checkTempVarNull(option[2])) {	// temp에 오류가 있다면, 오류를 처리 (배열 유무로 판단)
-				this.callAlertDistroy(option[2]);
-				
-				throw "tempRecordsError";
-//				throw new Error("tempRecordsError");
-			}
-			this.setCoreMap();
-			this.setOption(option);
-
-			this.saveMap(
-				this.createMap(this.getWidth(),this.getHeight())
-			);
-
-			this.setRandomColorMap();
-			this.setCP();
-
-			return true;
+		if (this.checkTempVarNull(option[2])) {	// temp에 오류가 있다면, 오류를 처리 (배열 유무로 판단)
+			this.callAlertDistroy(option[2]);
 		}
-		catch(e) {
-			console.error("tempRecordsError", e.message);
-			console.error("Because Error is you have are interpreter of JS, Have not recorded temp!");
-		}
+		
+		this.setCoreMap();
+		this.setOption(option);
+		
+		this.saveMap(this.createMap(this.getWidth(),this.getHeight()));
+		
+		this.setRandomColorMap();
+		this.setCP();
+		
+		return true;
 	}
 	
 	this.setCoreMap = function() {
@@ -199,9 +189,9 @@ var coreCE = function() {
 	// 맵 컬러 세팅을 완료하고 나면, cp에 따라 배치될 곳을 확인한다.
 	// 시작 부분의 색깔은 인접한 주변 색깔과 다른 색이여야 한다.
 	this.setCP = function() {
+		var map = this.getMap();
 		var point = this.cpInter();
 		var x = point.x, y = point.y;
-		var map = this.getMap();
 		
 		this.saveCP(x,y);
 		

@@ -5,12 +5,19 @@
 		<title>Color Empires Game</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		
+		<script src="js/stack.js"></script>
+		<script src="js/queue.js"></script>
+		
 		<link href="css/game.css" rel="stylesheet">
 		<link href="css/flag.css" rel="stylesheet">
-		<script src="js/game.js"></script>
+		
 		<script src="js/core.js"></script>
+		<script src="js/game.js"></script>
 		<script src="js/flag.js"></script>
 		<script src="js/naming.js"></script>
+		
+<!--		<script src="js/FindAndConnecting.js"></script>-->
 	</head>
 	<body onload="startSetFlag();">
 		<div class="wrap">
@@ -294,7 +301,7 @@
 							<div class="select-c">&nbsp;</div>
 							<div class="select-c">
 								<button class="select-mn" onclick="resetting();">Reset <i class='fas fa-redo-alt'></i></button>
-								<button class="select-st" onclick="startNewGame();">Start!</button>
+								<button class="select-st" onclick="startGame();">Start!</button>
 							</div>
 						</div>
 						

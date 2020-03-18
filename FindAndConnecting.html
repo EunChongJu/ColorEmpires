@@ -5,6 +5,72 @@
 		<script src="js/FindAndConnecting.js"></script>
 	</head>
 	<body>
-		<p>JS</p>
+		<section>
+			<p>FindAndConnecting.js</p>
+			<h1>Same Color Find And Connect Algorithm</h1>
+
+			<h2>What is this? Why Need?</h2>
+			<p>In this game, we solved the deadlock problem in the function for color expansion, and created a color expansion algorithm to replace the recursive function.</p>
+
+			<h2>How to works?</h2>
+			<p>This algorithm connects adjacent cells of the same color into one.</p>
+
+			<h2>Description of functions and operations</h2>
+			<p>First, an array of 2D shapes with color values is called a map.</p>
+			<p>And the map that filtered this map is called 'filterMap'.</p>
+			<p>Second, it searches for the same value among the entire map and stores it as 1 in the 'filterMap'.</p>
+			<p>Third, search for possible connections from the starting point based on the values stored in the 'filterMap'.</p>
+			<p>And the use of the stack is called 'branch point', so when the search reaches the end, it goes back and searches for another way.</p>
+			<p>When it reaches the end, it returns to the most recent branch point and continues the search, but if there are no more branch points to return, the connection search algorithm ends.</p>
+			<p>Finally, the connected cell is stored as 2 and the algorithm ends.</p>
+
+			<h2>How to use</h2>
+			<h3>Code:</h3>
+			<code>
+				// TEST ZONE<br>
+				startActive(5, 5);<br>
+				setStartPos(0,0);<br>
+				<br>
+				setCellVal(0,1);<br>
+				setCellVal(1,1);<br>
+				setCellVal(2,1);<br>
+				setCellVal(2,2);<br>
+				setCellVal(3,2);<br>
+				setCellVal(4,3);<br>
+				<br>
+				findCell(1);<br>
+				active();<br>
+			</code>
+
+			<p>'startActive(5, 5);' means that the map is created 5x5 and saved before navigation.</p>
+			<p>'setStartPos(0,0);' This specifies the starting point.</p>
+			<p>'setCellVal(0,1);' This stores the cell you want to find.</p>
+			<p>Now, if you run 'active()', the algorithm will connect and be saved to the map.</p>
+			<br>
+			<p>One thing to note is that it is ambiguous to use right away with this method. Instead, adapting it to the code you want to develop will make it much more versatile.</p>
+
+			<p>한가지 알아둘 점은 이 방법으로 바로 사용하기는 애매하다는 점입니다. 대신 자기가 개발하려는 코드에 맞게 개조하면, 훨씬 응용력이 높아질 것입니다.</p>
+
+<!--
+			<h2></h2>
+			<p></p>
+
+			<h2></h2>
+			<p></p>
+
+			<h2></h2>
+			<p></p>
+-->
+
+			<h2>Edit And Developed by Eun Chong Ju</h2>
+			<p>at Mar 17, 2020</p>
+			
+			<p>This idea will be necessary for someone. You can use this file as much as you like.</p>
+			<p>I would really appreciate it if you could indicate that the person who came up with the idea in the comments is me!</p>
+			
+			<p>이 아이디어는 누군가에게는 필요할 것입니다. 얼마든지 이 파일을 사용하셔도 좋습니다.</p>
+			<p>주석에 아이디어를 낸 사람이 저란 것을 표시해주신다면 정말로 대단히 감사드립니다!</p>
+			<p>(만약에 당신이 개조해서 사용했다면, 아이디어 선구자만 표시해주세요)</p>
+		</section>
 	</body>
 </html>

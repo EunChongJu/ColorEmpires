@@ -116,6 +116,7 @@ function displayCountryInfo() {
 	displayAllScore();	// ???
 	displayInfoCountryName();	// 국가명을 표시
 	displayInfoCP();	// CP (Capital Position)을 표시: 시작점 표시
+	gameExecutionStatus(1);
 }
 //// 클릭 이벤트
 // 게임을 실행하면서 컬러버튼 클릭을 감지하기 위해 동시에 관리하는 함수.
@@ -143,8 +144,8 @@ function clickActiveOperator(c) {
 	var pos = ce.getCP();
 	changeColorCells(pos.x, pos.y, color);
 	*/
-	activeFindAndChangeColor(color);
-	gameExecutionStatus();
+	activeFindAndChangeColor(color)
+	gameExecutionStatus(3);
 }
 // 컬러 버튼 클릭시, 아이디 값 유효성을 검사.
 function validValueCheck(val) {
@@ -195,39 +196,8 @@ function printColorsCell() {
 	line += '</div>';
 	return line;
 }
-/*
-//// 이벤트에 의한 색깔을 변경
-// 컬러 색을 바꿀 때, cp부터 주변에 인접한 같은 색깔의 셀을 (찾아내) 같이 바꾸도록 한다.
-function changeColorCells(x, y, color) {	// 인자에 있는 색깔은 숫자 값임.
-	var bc = ce.referenceVal(x,y);
-	cellChangeColor(x, y, color);	// 좌표 (x, y)을 
-	// 여기서 합리적인(?) 오류를 발견했다. 할당된 메모리를 많이 먹는 주범으로 확인됨.
-	// :: 분명히 같은 색임에도 불구하고 같이 색이 변하지 않는 점으로 미루어 보아 부족하다는 것으로 판단된다.
-	for (var i = -1; i <= 1; i+=2) {
-		// 맵 밖으로 나가는지(유효한 값인지) 확인
-		if (validCheckIndex(x,y+i)) {
-			if (ce.referenceVal(x,y+i) == bc) {
-//				cellChangeColor(x,y+i,color);
-				changeColorCells(x,y+i,color);
-			}
-		}
-		if (validCheckIndex(x+i,y)) {
-			if (ce.referenceVal(x+i,y) == bc) {
-//				cellChangeColor(x+i,y,color);
-				changeColorCells(x+i,y,color);
-			}
-		}
-	}
-}
-// 특정 셀의 컬러를 바꿈. 여기서 반복하듯 하면 게임처럼 만들 수 있다.
-function cellChangeColor(x, y, color) {
-	var id = convertValToID(x,y);
-	var cell = document.getElementById(id);
-	var beforeColor = (numToColorCode(ce.setColorCell(x, y, colorCodeToNum(color))));
-	cell.className = ""+color;
-	cell.innerHTML = color;
-}
-*/
+
+
 //// 이벤트에 의한 색깔 변경
 
 // 여기 모든 함수가 재귀적 함수를 이용해서 가동하는데, 이걸 반복으로 바꾸어야 한다.
@@ -240,11 +210,15 @@ function activeFindAndChangeColor(color) {	// 파라미터의 color은 숫자 �
 	var pos = ce.getCP();
 	var x = pos.x, y = pos.y;
 	var posC = filterMap[x][y];
+	
 	console.log(posC +" -> "+ color);
 	changeColorQ(x,y,posC);	// 바뀔 색깔(예를 들어 시작점에서는 Z를 찾는 것)을 찾아 -1로 바꾼다.
-	mergeSameColorMap(color);	// -1을 찾아 색깔을 바꾼다.
+	
+	mergeSameColorMap(color);	// -1을 찾아 색깔을 바꾼다. 그리고, 점령지 수를 반환받는다.
+	
 	ce.saveMap(filterMap);		// 맵을 저장한다.
 }
+
 // -1의 의미는 현재 검사에서 이 곳은 딴 애가 '이미 검사했으니 알아서 피해가~'라는 의미다.
 // 검사를 마치고 나면, saveMap()을 이용해 -1을 모두 합병 후의 색깔로 바뀌어야 다음 검사에서 검사가 가능하다.
 // 또한, 큐도 스타일 지정이 완료되고 나면, 초기화하여 비운다.
@@ -272,79 +246,71 @@ function changeColorQ(x,y,c) {	// parameter is Number type. 그 컬러가 바뀔
 	}
 	console.dir(filterMap);
 }
-/*
-function nullExpansion(x,y) {
-	for (var i = -1; i <= 1; i++) {
-		for (var j = -1; j <= 1; j++) {
-			if (md2.indexValueValid((x + i), (y + j))) {
-				if (md2.map[x+i][y+j] != -2) {
-					var posX = x+i, posY = y+j;
-					var id = "c" + fitToNumUnit(posX, 2) + fitToNumUnit(posY, 2);
-					var cell = document.getElementById(id);
-					var value = md2.map[posX][posY];
-					if (value > 0) {
-						cell.innerHTML = '' + value;
-						showNumber(cell, value);
-						md2.map[posX][posY] = -2;
-					}
-					else {
-						md2.map[posX][posY] = -2;
-						nullExpansion(posX,posY);
-					}
-					cell.style.backgroundColor = 'white';
-					cell.disabled = true;
-				}
-			}
-		}
-	}
-}
-*/
+
 function mergeColorCell(x,y,c) {
 	var cell = document.getElementById(convertValToID(x,y));
 	var color = numToColorCode(c);
 	cell.className = ""+color;
 	cell.innerHTML = color;
 }
+
 // 맵의 모든 -1의 값을 하나의 색깔로 저장합니다: 합병되었다고 하면 될듯.
 function mergeSameColorMap(color) {	// 파라미터는 숫자형.
+	var con = 0;
 	for (var i = 0; i < getWidth(); i++) {
 		for (var j = 0; j < getHeight(); j++) {
-			// ERROR
 			if (filterMap[i][j] == -1) {
 				filterMap[i][j] = color;
 				mergeColorCell(i,j,color);
+				con++;
 			}
 		}
 	}
+	console.log('conquer : '+con);
 }
+
+
 //// 뭔가를 표시하는 모임
 // 게임의 진행도 현황을 표시하는 함수
-function gameExecutionStatus() {
+function gameExecutionStatus(conquer) {
+	var uni = false;
 	var max = referenceMapCellsMax();
-	var conquer = 20;
 	document.getElementById('status-conquer').innerHTML = ''+conquer;
+	
 	var bar = (conquer / max) * 100;
 	document.getElementById("progress-bar").style.width = bar + "%";
 }
+
 // Country Name을 표시
 function displayInfoCountryName() {
 	var cn = ce.getCountryName();
 	document.getElementById('cn').innerHTML = ''+cn;
 }
+
 // 국가수도 위치를 배치
 function displayInfoCP() {
 	var cp = ce.getCapitalPosition();
 	document.getElementById('capitalPos').innerHTML = ''+cp;
 }
+
 // 모든 셀의 갯수를 표시
 function displayInfoMax() {
 	var max = referenceMapCellsMax();
 	document.getElementById('status-max').innerHTML = ''+max;
 }
+
 // 이전 기록을 표시
 function displayAllScore() {
 	console.log('All Score나 만드셈');
 }
+
+// 완전 통일 검사
+function unificationCheck(conquer) {
+	var all = getWidth() * getHeight();
+	return ((all == conquer) ? true : false);
+}
+
+
 /* 
  * 컬러 - 숫자 값 대조표 ::
  * 0: Z

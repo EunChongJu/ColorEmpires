@@ -56,11 +56,11 @@ function validCheckIndex(x,y) {	// 현재위치의 주변에는 맵을 벗어나
 	
 	var widthValid = !((x < 0) || (x >= w));	// 그중에 하나라도 벗어난다면 false
 	var heightValid = !((y < 0) || (y >= h));	// 그중에 하나라도 벗어난다면 false
-	
+	/*
 	console.log('x, y : '+x+', '+y);
 	console.log('widthValid : ' + widthValid);
 	console.log('heightValid : ' + heightValid);
-	
+	*/
 	return (widthValid && heightValid);	// 둘다 벗어나지 않는다면, true
 }
 
@@ -174,6 +174,34 @@ function find(ix,iy) {
 	return check;
 }
 
+/*
+function nullExpansion(x,y) {
+	for (var i = -1; i <= 1; i++) {
+		for (var j = -1; j <= 1; j++) {
+			if (md2.indexValueValid((x + i), (y + j))) {
+				if (md2.map[x+i][y+j] != -2) {
+					var posX = x+i, posY = y+j;
+					var id = "c" + fitToNumUnit(posX, 2) + fitToNumUnit(posY, 2);
+					var cell = document.getElementById(id);
+					var value = md2.map[posX][posY];
+					if (value > 0) {
+						cell.innerHTML = '' + value;
+						showNumber(cell, value);
+						md2.map[posX][posY] = -2;
+					}
+					else {
+						md2.map[posX][posY] = -2;
+						nullExpansion(posX,posY);
+					}
+					cell.style.backgroundColor = 'white';
+					cell.disabled = true;
+				}
+			}
+		}
+	}
+}
+*/
+
 // 잎 부분에서 막혀서 되돌아가려는데
 // 만약에 분기점이 (최초 분기점은 cp라 불리는 장소이며, 스택에 저장되어 있음)
 // 하나도 없다면, 이는 탐색이 완료되었다고 가정할 수 있다.
@@ -202,7 +230,7 @@ function active() {
 	start();
 	
 	while (true) {
-		console.log('current : '+x+','+y);
+//		console.log('current : '+x+','+y);
 		
 		if (find(x,y) > 0) {	// 만약 길이 있다면 (분기점은 find()에서 처리함.)
 			// path() 함수를 실행
@@ -225,7 +253,7 @@ function active() {
 			}
 		}		// 여느때나 상관없이 go() 함수로 x,y를 지정하면 조건문 분기를 거치고 원래대로 돌아간다.
 		
-		console.log('active : '+x+','+y);
+//		console.log('active : '+x+','+y);
 	}
 }
 

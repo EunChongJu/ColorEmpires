@@ -35,6 +35,9 @@ var beforeStep = 0;
 // 클릭을 가능하게 함
 var clickValidity = true;
 
+// 보너스 기록
+var bonusArr = null;
+
 
 
 //// 무언가의 필수임. :: core.js의 부담을 덜기 위해(호출을 줄이기 위해) 사용.
@@ -132,6 +135,7 @@ function startApp(option) {
 	
 	count = 0;
 	beforeStep = 0;
+	bonusArr = new Array();
 	
 	if (ce.start(option)) {
 		printMap();
@@ -196,11 +200,9 @@ function clickActiveOperator(c) {
 }
 
 function disableColorsBtn() {	// 컬러버튼을 못누르게 만듬. 그리고 클릭감지를 해제.
-	for (let el of document.querySelectorAll('.color')) el.disabled = true;
 	clickValidity = false;
 }
 function enableColorsBtn() {	// 컬러버튼을 누를 수 있도록 클릭감지를 해제.
-	for (let el of document.querySelectorAll('.color')) el.disabled = false;
 	clickValidity = true;
 }
 
@@ -359,9 +361,8 @@ function settlePoint(conquer) {
 	
 //	console.log('bonus : ' + bonus);
 	
-	// 보너스 계산
+	// 보너스 계산 : 카운트가 길어질수록 더해지는 수가 줄어든다.
 	bonus += parseInt((count - 1) * remaining * stepGap * 0.001);
-	// 카운트가 길어질수록 더해지는 수가 줄어든다.
 	
 	// 포인트 계산
 	point += stepGap + bonus;
@@ -372,6 +373,7 @@ function settlePoint(conquer) {
 	document.getElementById('remaining').innerHTML = '' + remaining;
 	
 	ce.setPoint(point);	// 포인트를 갱신
+	bonusArr.push(bonus);	// 보너스 기록 저장
 }
 
 
@@ -537,9 +539,6 @@ function exitGame() {
 
 // 완전히 통일되었을 때, 또는 게임 중도퇴장시 발생하는 이벤트의 중앙시스템
 function afterActive(uni) {	//
-	// 포인트 계산 및 분석 중...
-	pointAnalyzing();
-	
 	// 디스플레이 조정
 	gameDisplayOff();
 	afterDisplayOn();
@@ -567,7 +566,7 @@ function closeCongratEvent() {
 	showAnalysisGraph();
 }
 
-// 중도퇴장시, 띄우는 것으로, 지도자가 쫓겨난것처럼 묘사하거나~
+// 중도퇴장시, 띄우는 것.
 function openExitEvent() {
 	document.getElementById('exitModal').style.display = 'block';
 }
@@ -580,7 +579,7 @@ function closeExitEvent() {
 // congrat 창을 닫으면 다음으로 분석표를 띄운다.
 function showAnalysisGraph() {
 	document.getElementById('analysis').style.display = 'block';
-	activeAnalysisGraph();
+	activeAnalyzing();	// activeAnalyzing()을 실행하고 graph를 띄운다.
 }
 // 분석표를 닫으면 발생하는 이벤트
 function closeAnalysisGraph() {
@@ -600,6 +599,10 @@ function hideQAgain() {
 	document.getElementById('gameAgain').style.display = 'none';
 }
 
+// 보너스 기록을 리턴
+function getArrayOfBonus() {
+	return bonusArr;
+}
 
 //{
 // playNewGame()은 core를 종료시키고 input을 초기화한다.
@@ -647,8 +650,17 @@ function systemShutDown() {
 
 // Play same board를 눌렀을 때, 초기화해야하는 것만 실행
 function resetting() {
-	graphIndex = 1;
-	enableColorsBtn();
+	count = 0;			// 현재 몇 턴인지 표시하는 것을 초기화
+	
+	bonusArr = null;	// 보너스 기록을 초기화
+	
+	beforeStep = 0;		// 이전 기록을 초기화
+	
+	filterMap = null;	// 필터 맵을 초기화
+	
+	enableColorsBtn();	// 클릭을 가능하게 함
+	
+	clearGraphIndex();	// 그래프 인덱스번호를 초기화
 }
 
 // core를 null로 바꿈으로 삭제

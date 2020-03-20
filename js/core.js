@@ -44,6 +44,7 @@ var coreCE = function() {
 	var conquer = 0;
 	// analysisGraph에 쓰이기 위한 포인트의 배열
 	var pointArr = new Array();
+	var conquerArr = new Array();
 	
 	this.start = function(option) {
 		/*
@@ -311,6 +312,7 @@ var coreCE = function() {
 				}
 			}
 		}
+		conquerArr.push(conquer);
 		return conquer;
 	}
 	
@@ -495,10 +497,16 @@ var coreCE = function() {
 		pointArr.push(point);
 	}
 	
-	// analysisGraph를 위해 게임 포인트 배열을 반환
-	this.returnArrayOfPoints = function() {
+	// analysisGraph를 위해 게임상 기록한 배열을 반환
+	this.returnArrayOfPoint = function() {
 		return pointArr;
 	}
+	this.returnArrayOfConquer = function() {
+		return conquerArr;
+	}
+	
+	
+	
 	// 게임 포인트를 카운트 별로 저장을 해놓았다. 그걸 통째로 반환하여 analysisGraph에 활용된다.
 	
 	

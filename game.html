@@ -6,6 +6,13 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		
+		<!--Graph System-->
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="js/billboard.min.js"></script>
+		<link rel="stylesheet" href="css/billboard.min.css">
+		<link rel="stylesheet" href="css/insight.min.css">
+		<script src="js/graph.js" defer></script>
+		
 		<script src="js/stack.js"></script>
 		<script src="js/queue.js"></script>
 		
@@ -495,7 +502,21 @@
 						</div>
 					</div>
 					<div class="game-take"><!--포인트 현황과 나가기 버튼이 있음.-->
-						&nbsp;
+						<div class="take-wrap">
+							<div class="take-top">
+								<button class="take-exiting" onclick="showQExit();">&times;</button>
+							</div>
+							<div class="point-wrap">
+								<div class="point-info">
+									<p>Point : <span id="point">0</span></p>
+									<p>Bonus : <span id="bonus">0</span></p>
+								</div>
+								<div class="point-info">
+									<p>Count : <span id="count">0</span></p>
+									<p>Remain : <span id="remaining">0</span></p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="game-progress">
@@ -523,10 +544,78 @@
 					<div class="color" id="P">P</div>
 					<div class="color" id="W">W</div>
 				</div>
+				<div class="exit-wrap" id="exit">
+					<div class="exit-modal">
+						<div class="exit-header">
+							<p>Exit?</p>
+						</div>
+						<div class="exit-container">
+							<p>Are you sure you want to get out of the game?</p>
+							<p>You get out of the game, go Home.</p>
+						</div>
+						<div class="exit-confirm">
+							<button class="exit-btn" onclick="exitGame();">Yes</button>
+							<button class="exit-btn" onclick="hideQExit();">No</button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="after" id="after">
 				<div class="after-wrap">
-					
+					<div class="after-modal" id="congrat">
+						<div class="after-header">
+							<p>Congratulations!</p>
+						</div>
+						<div class="after-container">
+							<img src="images/congrat.png"><!--IMAGE SOURCE : https://codepen.io/nicknish/pen/RrGrmZ -->
+							<p>Congratulations! You have unified the whole!</p>
+						</div>
+						<div class="after-footer">
+							<button class="after-btn" onclick="closeCongratEvent();">Next</button>
+						</div>
+					</div>
+					<div class="after-modal" id="exitModal">
+						<div class="after-header">
+							<p>당신은 국가의 지도자에서 쫓겨났습니다</p>
+						</div>
+						<div class="after-container">
+<!--							<img src="images/impeachment.jpg">-->
+							<p>하지만 얼마든지 재위를 시도할 수 있습니다!</p>
+						</div>
+						<div class="after-footer">
+							<button class="after-btn" onclick="closeExitEvent();">Next</button>
+						</div>
+					</div>
+					<div class="after-modal" id="analysis">
+						<div class="after-header">
+							<p>Analysis Graph</p>
+						</div>
+						<div class="after-container">
+							<div id="pointChart"></div><!--Point and Bonus-->
+							<div id="CRChart"></div><!--Conquer and Remaining-->
+							<div id="PRChart"></div><!--Previous record-->
+							<div class="hand-skip">
+								<button class="after-btn" id="prev" onclick="prevGraph();">&lt;</button>
+								<button class="after-btn" id="next" onclick="nextGraph();">&gt;</button>
+							</div>
+						</div>
+						<div class="after-footer">
+							<button class="after-btn" onclick="closeAnalysisGraph();">Next</button>
+						</div>
+					</div>
+					<div class="after-modal" id="gameAgain">
+						<div class="after-header">
+							<p>Again</p>
+						</div>
+						<div class="after-container">
+							<p>Would you like to play the game again?</p>
+						</div>
+						<div class="after-footer">
+							<button class="after-btn" onclick="playNewGame();">New Game</button>
+							<button class="after-btn" onclick="playSameGame();">Play same board</button>
+							<button class="after-btn" onclick="gameOver();">Exit</button>
+						</div>
+					</div>
 				</div>
 				
 			</div>

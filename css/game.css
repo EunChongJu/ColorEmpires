@@ -354,6 +354,7 @@
 	background-color:#4CAF50;
 	font-size:1.2em;
 	color:#FFF;
+	cursor:pointer;
 }
 
 /* Add Zoom Animation */
@@ -435,6 +436,47 @@
 	width:100%;
 	background:#BBB;
 }
+.take-wrap{
+	display:flex;
+	flex-direction:column;
+}
+.take-top{
+	flex:1;
+}
+.take-exiting{
+	float:right;
+	clear:both;
+	padding:6px 12px;
+	background:#F00;
+	font-size:1.6em;
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+}
+.point-wrap{
+	flex:1;
+	display:flex;
+	flex-direction:row;
+	width:100%;
+}
+.point-info{
+	flex:1;
+	padding:10px;
+	font-size:1.1em;
+}
+#point{
+	font-size:1.6em;
+}
+#bonus{
+	font-size:1.2em;
+}
+#count{
+	font-size:1.1em;
+}
+#remaining{
+	font-size:1.1em;
+}
+
 
 .game-progress{
 	width: 100%;
@@ -512,9 +554,144 @@
 	cursor:pointer;
 }
 
+/* exit Modal */
+.exit-wrap{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.3);
+}
+.exit-modal{
+	position:fixed;
+	top:50%;
+	left:50%;
+	width:20%;
+	background:#FFF;
+	transform:translate(-50%,-50%);
+}
+.exit-header{
+	width:100%;
+	padding:10px;
+	background:#DDD;
+}
+.exit-header>p{
+	font-size:1.4em;
+}
+.exit-container{
+	padding:15px;
+}
+.exit-container>p{
+	font-size:1.6em;
+}
+.exit-confirm{
+	padding:10px;
+	text-align:center;
+}
+.exit-btn{
+	padding:6px 10px;
+	font-size:1.2em;
+	cursor:pointer;
+}
+.exit-btn:nth-child(1){
+	background:#4caf50;
+	color:#FFF;
+}
+.exit-btn:nth-child(2){
+	background:#FF0000;
+	color:#FFF;
+}
+
 
 /* 게임 오버 후 */
 .after{
 	display:none;
 }
+.after-wrap{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.3);
+	transition:all 0.4s;
+}
+.after-modal{
+	position:fixed;
+	top:50%;
+	left:50%;
+	width:50%;
+	background:#FFF;
+	transform:translate(-50%,-50%);
+}
+#congrat{
+	display:none;
+	text-align:center;
+}
+#exitModal{
+	display:none;
+	text-align:center;
+}
+#analysis{
+	display:none;
+	width:100%;
+}
+#analysis>.after-container{
+	width:100%;
+}
+#pointChart{display:block;}
+#CRChart{display:block;}
+#PRChart{display:block;}
+#gameAgain{
+	display:none;
+}
+.after-header{
+	padding:10px;
+	background:#EEE;
+}
+.after-header>p{
+	font-size:1.6em;
+}
+.after-container{
+	padding:10px;
+}
+.after-container>img{
+	max-width:100%;
+}
+.after-container>p{
+	font-size:1.4em;
+}
+.after-footer{
+	clear:both;
+	padding:10px;
+	background:#EEE;
+	text-align:center;
+}
+.after-btn{
+	padding:12px 20px;
+	background:#FFF;
+	font-size:1.2em;
+	cursor:pointer;
+}
+.hand-skip{
+	width:100%;
+}
+#prev{
+	float:left;
+	background:rgba(0,0,0,0.3);
+	color:#FFF;
+}
+#next{
+	float:right;
+	background:rgba(0,0,0,0.3);
+	color:#FFF;
+}
+
+
+
+
+
+
 

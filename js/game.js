@@ -620,6 +620,10 @@ function playNewGame() {
 	location.reload();	// 그냥 리로드하는게 제일 빠르다.
 }
 
+function resetForm() {
+	location.reload();
+}
+
 // 동일한 옵션으로 다시하기
 function playSameGame() {
 	hideQAgain();	// 동일한 옴션을 누르게 되면, core를 초기하하되 옵션을 삭제하지 않는다.
